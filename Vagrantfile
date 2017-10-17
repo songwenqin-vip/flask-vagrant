@@ -106,6 +106,7 @@ Vagrant.configure("2") do |config|
     ln -sf /usr/local/lib/python2.7.14/bin/python /usr/bin/python
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
     python get-pip.py
+    rm get-pip.py
     ln -s /usr/local/lib/python2.7.14/bin/easy_install /usr/bin/easy_install
     ln -s /usr/local/lib/python2.7.14/bin/pip /usr/bin/pip
   SHELL
