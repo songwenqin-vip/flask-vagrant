@@ -116,5 +116,16 @@ Vagrant.configure("2") do |config|
     pip install flask-restful
   SHELL
    
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "install Postgres"
+    wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | sudo apt-key add -
+    sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+    apt-get update
+    apt-get install -y postgresql postgresql-contrib
+    sed -i "s/#listen_address.*/listen_addresses '*'/" /etc/postgresql/*/main/postgresql.conf
+    su postgres -c "psql -c \"CREATE ROLE vagrant SUPERUSER LOGIN PASSWORD 'vagrant'\" "
+    su postgres -c "createdb -E UTF8 -T template0 --locale=en_US.utf8 -O vagrant flask-sample"
+  SHELL
+   
    
 end
