@@ -126,6 +126,21 @@ Vagrant.configure("2") do |config|
     apt-get -qq install -y libpq-dev
     pip install pygresql
   SHELL
+
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "install Ubuntu Desktop"
+    apt-get install --no-install-recommends ubuntu-desktop
+  SHELL
+
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "install Pycharm"
+    wget -q https://download.jetbrains.com/python/pycharm-community-2017.2.3.tar.gz
+    tar xvf pycharm-community-2017.2.3.tar.gz
+    mv pycharm-community-2017.2.3 /opt
+    rm pycharm-community-2017.2.3.tar.gz
+  SHELL
+
+
    
    
 end
