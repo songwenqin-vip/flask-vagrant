@@ -140,6 +140,12 @@ Vagrant.configure("2") do |config|
     rm pycharm-community-2017.2.3.tar.gz
   SHELL
 
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "Rebooting...bye"
+    reboot
+  SHELL
+
+
 
    
    
