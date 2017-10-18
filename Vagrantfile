@@ -123,8 +123,6 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get install -y postgresql postgresql-contrib
     sed -i "s/#listen_address.*/listen_addresses '*'/" /etc/postgresql/*/main/postgresql.conf
-    su postgres -c "psql -c \"CREATE ROLE vagrant SUPERUSER LOGIN PASSWORD 'vagrant'\" "
-    su postgres -c "createdb -E UTF8 -T template0 --locale=en_US.utf8 -O vagrant flask-sample"
   SHELL
    
    
