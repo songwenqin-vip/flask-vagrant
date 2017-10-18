@@ -129,7 +129,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", inline: <<-SHELL
     echo "install Ubuntu Desktop"
-    apt-get install --no-install-recommends ubuntu-desktop
+    apt-get install -y --no-install-recommends ubuntu-desktop
   SHELL
 
   config.vm.provision "shell", inline: <<-SHELL
