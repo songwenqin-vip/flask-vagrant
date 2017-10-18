@@ -123,6 +123,8 @@ Vagrant.configure("2") do |config|
     apt-get update
     apt-get install -y postgresql postgresql-contrib
     sed -i "s/#listen_address.*/listen_addresses '*'/" /etc/postgresql/*/main/postgresql.conf
+    apt-get -qq install -y libpq-dev
+    pip install pygresql
   SHELL
    
    
